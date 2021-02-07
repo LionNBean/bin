@@ -20,7 +20,6 @@ class Doc_struction():
             if os.path.isdir(each):
                 self._doc_struct.append([self._stack, each, each.split('/')[-1].split('\\')[-1]])
                 self._stack += 1
-                hasdir_stat = True
                 self.get_dirs(each)
                 self._stack -= 1
 
