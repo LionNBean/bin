@@ -37,4 +37,4 @@ if __name__=="__main__":
     ds.get_dirs()
     ds.output_profile()
 
-    quit = input('\nPress any button to quit.\n')
+    quit = input('\nPress Enter to quit.\n')
