@@ -39,22 +39,24 @@ class WrappedImage():
         self._height = height_value
 
     def resize_image(self):
-        try:
-            os.mkdir('output')
-        except FileExistsError:
-            print("output is already exist, overwrite it.\n")
-        for each in self._files:
-            pic_full_name =  each.split('/')[-1].split('\\')[-1]
-            pic_name = pic_full_name.split('.')[0] 
-            pic_format = pic_full_name.split('.')[-1] 
-            im = Image.open(each)
-            im.thumbnail((self._width, self._height))
-            im.save(os.path.join('output', pic_full_name), 'png')
+        if self._files == []:
+            print('\nThere is no pics here.\n')
+        else:
+            try:
+                os.mkdir('output')
+            finally:
+                self._width, self._height = tuple(map(int, input('w,h\n').split(',')))
+                for each in self._files:
+                    pic_full_name =  each.split('/')[-1].split('\\')[-1]
+                    pic_name = pic_full_name.split('.')[0] 
+                    pic_format = pic_full_name.split('.')[-1] 
+                    im = Image.open(each)
+                    im.thumbnail((self._width, self._height))
+                    im.save(os.path.join('output', pic_full_name), 'png')
 
 if __name__=="__main__":
     
     im = WrappedImage()
-    im.width, im.height = tuple(map(int, input('w,h\n').split(',')))
     im.resize_image()
 
     quit = input('\nPress Enter to quit.\n')
