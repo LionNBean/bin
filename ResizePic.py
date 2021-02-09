@@ -52,7 +52,7 @@ class WrappedImage():
                     pic_format = pic_full_name.split('.')[-1] 
                     im = Image.open(each)
                     im.thumbnail((self._width, self._height))
-                    im.save(os.path.join('output', pic_full_name), 'png')
+                    im.save(os.path.join('output', pic_name + '.png'), 'png')
 
 if __name__=="__main__":
     
