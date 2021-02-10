@@ -32,10 +32,11 @@ class ModifyExif():
                     with pyexiv2.Image(each) as img:
                         origin_exif = img.read_exif()
 #                        for item in ['Exif.Photo.DateTimeDigitized', 'Exif.Photo.DateTimeOriginal', 'Exif.Image.DateTime']:
-                        for item in ['Exif.Photo.DateTimeOriginal']:
-                            img.modify_exif({item:pic_name[:4]
-                            + ':' + pic_name[4:6] + ':' + pic_name[6:8]
-                            + origin_exif[item][10:]})
+                        item ='Exif.Photo.DateTimeOriginal']
+#                        if int(item[:4]) - int(pic_name[:4]) > 0:
+                        img.modify_exif({item:pic_name[:4]
+                        + ':' + pic_name[4:6] + ':' + pic_name[6:8]
+                        + origin_exif[item][10:]})
                 except: print('There is something wrong with', pic_full_name)
 
 if __name__=="__main__":
